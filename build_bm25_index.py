@@ -13,8 +13,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from src.retrieval import BM25Index
-from src.storage import VectorStore
+from src.retrieval.bm25_index import BM25Index
+from src.storage.chroma_store import ChromaVectorStore
 
 
 def build_index():
@@ -26,13 +26,13 @@ def build_index():
     
     # Check if vector store has data
     print("\n📊 Checking ChromaDB...")
-    store = VectorStore()
+    store = ChromaVectorStore()
     count = store.count()
     
     if count == 0:
         print("❌ No documents in ChromaDB!")
-        print("\nPlease upload documents first:")
-        print("  python examples/batch_upload.py data/test_documents/")
+        print("\nPlease upload documents through the Streamlit app first:")
+        print("  streamlit run app.py")
         return
     
     print(f"✅ Found {count} chunks in ChromaDB")
@@ -73,8 +73,8 @@ def build_index():
         
         print("\n✅ Index is ready to use!")
         print("\n💡 Next steps:")
-        print("   1. Use KeywordSearchAgent in real mode")
-        print("   2. Test with: python examples/test_keyword_search.py")
+        print("   1. Run the Streamlit app: streamlit run app.py")
+        print("   2. Ask a question in Agentic mode to use BM25 with vector and graph retrieval")
         
     except Exception as e:
         print(f"\n❌ Failed to build index: {str(e)}")

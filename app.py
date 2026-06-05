@@ -319,7 +319,7 @@ def sidebar():
         st.divider()
         
         # ============================================
-        # KNOWLEDGE GRAPH STATS (NEW - WEEK 9)
+        # KNOWLEDGE GRAPH STATS
         # ============================================
         if st.session_state.knowledge_graph:
             st.subheader("🕸️ Knowledge Graph")
