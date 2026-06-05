@@ -59,6 +59,7 @@ class TestNaiveRAG:
             query_embedding=[0.1] * 8,
             top_k=5,
             return_parent=False,
+            filename=None,
         )
         mock_writer.run.assert_called_once()
         assert result.answer == "ML is a subset of AI [1]."

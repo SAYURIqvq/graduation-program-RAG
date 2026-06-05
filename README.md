@@ -6,7 +6,7 @@
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests](https://img.shields.io/badge/tests-230+-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/tests-256%20core%20passing-brightgreen.svg)]()
 
 An intelligent document Q&A system built on a hierarchical multi-agent architecture with self-reflection, graph-based reasoning, and adaptive query strategies.
 
@@ -254,8 +254,8 @@ Python 3.12+, Git, DeepSeek-compatible API key
 ### Installation
 
 ```bash
-git clone https://github.com/SAYURIqvq/newnewnew-rag.git
-cd newnewnew-rag
+git clone https://github.com/SAYURIqvq/graduation-program-RAG.git
+cd graduation-program-RAG
 
 python -m venv venv
 source venv/bin/activate            # Windows: venv\Scripts\activate
@@ -323,7 +323,7 @@ Every answer includes inline citations (`[1]`, `[2]`, …) tracing each claim to
 ## Project Structure
 
 ```
-newnewnew-rag/
+graduation-program-RAG/
 ├── app.py                              # Streamlit entry point
 ├── src/
 │   ├── agents/                         # Agent implementations
@@ -336,9 +336,8 @@ newnewnew-rag/
 │   │   ├── critic.py                   # L2 — answer review
 │   │   ├── reliability_gate.py         # Final grounding check
 │   │   ├── self_reflection.py          # Self-reflection agent
-│   │   ├── graph_search_agent.py       # Graph-based search agent
-│   │   ├── graph_traversal_agent.py    # Graph traversal logic
-│   │   └── retrieval/                  # Legacy retrieval agents (test only)
+│   │   ├── graph_search_agent.py       # Graph-based search utilities
+│   │   └── graph_traversal_agent.py    # Graph traversal logic
 │   ├── retrieval/                      # Production retrieval
 │   │   ├── vector_search.py            # BGE semantic search
 │   │   ├── keyword_search.py           # BM25 keyword search

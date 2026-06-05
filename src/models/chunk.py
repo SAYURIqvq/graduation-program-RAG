@@ -45,7 +45,7 @@ class Chunk:
         chunk_type: 'parent' or 'child'
         
         # Embeddings
-        embedding: Vector embedding (from Voyage AI or other)
+        embedding: Vector embedding from the configured embedding backend
         
         # Metadata
         metadata: Additional metadata (filename, page, etc.)
@@ -113,6 +113,9 @@ class Chunk:
     
     def __post_init__(self):
         """Post-initialization processing."""
+        if self.score is not None and not 0.0 <= self.score <= 1.0:
+            raise ValueError("score must be between 0.0 and 1.0")
+
         # Ensure metadata is initialized
         if self.metadata is None:
             self.metadata = {}
@@ -142,9 +145,10 @@ class Chunk:
     
     def __repr__(self) -> str:
         """String representation for debugging."""
+        score = self.score if self.score is not None else 0.0
         return (
             f"Chunk(id={self.chunk_id}, type={self.chunk_type}, "
-            f"tokens={self.token_count}, score={self.score:.3f})"
+            f"tokens={self.token_count}, score={score:.3f})"
         )
     
     def __str__(self) -> str:

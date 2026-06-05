@@ -1,4 +1,4 @@
-"""Test Hybrid Relationship Extractor - Week 9 Day 2"""
+"""Test Hybrid Relationship extractor"""
 
 import sys
 from pathlib import Path

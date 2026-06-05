@@ -190,7 +190,7 @@ class GenerationError(AgenticRAGException):
         >>> raise GenerationError(
         ...     message="Failed to generate answer",
         ...     llm_error="Rate limit exceeded",
-        ...     details={"model": "claude-3-5-sonnet", "tokens": 100000}
+        ...     details={"model": "deepseek-chat", "tokens": 100000}
         ... )
     """
     

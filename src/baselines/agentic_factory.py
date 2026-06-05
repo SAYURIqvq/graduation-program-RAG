@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Optional
 
 from src.config import get_settings
-from src.llm.qwen import create_qwen_chat_model
+from src.llm.chat_model import create_chat_model
 from src.storage.chroma_store import ChromaVectorStore
 from src.ingestion.embedder import EmbeddingGenerator
 from src.graph.graph_builder import KnowledgeGraph
@@ -30,7 +30,7 @@ def create_agentic_workflow(
 ) -> CompleteAgenticRAGWorkflow:
     """Create CompleteAgenticRAGWorkflow using on-disk Chroma + optional graph."""
     settings = get_settings()
-    llm = create_qwen_chat_model(settings, max_tokens=llm_max_tokens)
+    llm = create_chat_model(settings, max_tokens=llm_max_tokens)
 
     vector_store = ChromaVectorStore(persist_directory=persist_directory)
     embedder = EmbeddingGenerator()

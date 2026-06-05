@@ -1,6 +1,6 @@
 """
 RAGAS-based evaluation for RAG system.
-Override default OpenAI models with the project's DeepSeek-compatible LLM
+Configure RAGAS with the project DeepSeek-compatible LLM
 and BGE embedding model.
 """
 

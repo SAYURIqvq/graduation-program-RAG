@@ -168,7 +168,7 @@ class TestGenerationError:
     
     def test_generation_error_full(self):
         """Test generation error with all parameters"""
-        details = {"model": "claude-3-5-sonnet", "tokens": 100000}
+        details = {"model": "deepseek-chat", "tokens": 100000}
         exc = GenerationError(
             message="Token limit exceeded",
             llm_error="Context too long",
@@ -227,7 +227,7 @@ class TestConfigurationError:
             config_key="ANTHROPIC_AUTH_TOKEN"
         )
         
-        assert exc.config_key == "DASHSCOPE_API_KEY"
+        assert exc.config_key == "ANTHROPIC_AUTH_TOKEN"
         assert "ANTHROPIC_AUTH_TOKEN" in str(exc)
     
     def test_configuration_error_full(self):

@@ -12,7 +12,7 @@ from src.models.chunk import Chunk
 from src.storage.chroma_store import ChromaVectorStore
 from src.ingestion.embedder import EmbeddingGenerator
 from src.agents.writer import WriterAgent
-from src.llm.qwen import create_qwen_chat_model
+from src.llm.chat_model import create_chat_model
 from src.config import get_settings
 
 
@@ -42,7 +42,7 @@ class NaiveRAG:
         self.embedder = embedder or EmbeddingGenerator()
         if writer is None:
             settings = get_settings()
-            llm = create_qwen_chat_model(settings)
+            llm = create_chat_model(settings)
             writer = WriterAgent(llm=llm)
         self.writer = writer
         self.target_filename = target_filename

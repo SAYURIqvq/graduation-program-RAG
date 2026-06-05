@@ -1,5 +1,5 @@
 """
-Graph Visualizer - Week 9 Day 4
+Graph visualizer
 Visualize knowledge graph using matplotlib and networkx.
 """
 

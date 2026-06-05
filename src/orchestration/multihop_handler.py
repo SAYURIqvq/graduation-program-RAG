@@ -1,5 +1,5 @@
 """
-Multi-hop Query Handler - Week 5 Day 5
+Multi-hop query handler
 Processes decomposed queries and aggregates results.
 """
 

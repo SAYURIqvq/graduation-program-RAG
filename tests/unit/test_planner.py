@@ -18,7 +18,7 @@ def mock_llm():
     """
     Create mock LLM for testing.
     
-    Returns mock that simulates Claude API responses.
+    Returns mock that simulates configured LLM API responses.
     """
     llm = Mock(spec=BaseChatModel)
     

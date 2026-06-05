@@ -1,5 +1,5 @@
 """
-Test Edge Cases - Week 10 Day 4
+Test Edge Cases - current integration tests
 Test error handling and edge cases.
 """
 

@@ -1,4 +1,4 @@
-"""Test Knowledge Graph Builder - Week 9 Day 3"""
+"""Test Knowledge graph builder"""
 
 import sys
 from pathlib import Path

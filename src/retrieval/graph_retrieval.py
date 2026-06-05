@@ -1,5 +1,5 @@
 """
-Graph-based Retrieval - Week 10 Day 2
+Graph-based retrieval
 Retrieve chunks based on knowledge graph paths.
 """
 

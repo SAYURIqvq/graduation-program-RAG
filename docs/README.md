@@ -46,6 +46,3 @@ Use these files as the main technical references:
 | Controlled thesis documents | `data/thesis_corpus/` |
 | Case studies | `results/thesis_complex_reasoning/case_studies/` |
 
-## Historical Notes
-
-The `WEEK*_SUMMARY.md` and `DAILY_PROGRESS.md` files are historical development notes. They describe earlier prototypes and may contain early metrics, dates, or provider names from development. The final submission should rely on the current documents listed above and the results under `results/`.

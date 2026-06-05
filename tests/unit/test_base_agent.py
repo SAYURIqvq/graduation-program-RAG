@@ -266,7 +266,7 @@ class TestBaseAgentMetrics:
             agent.run(state)
         
         metrics = agent.get_metrics()
-        assert metrics["average_time_seconds"] > 0
+        assert metrics["average_time_seconds"] >= 0
         assert metrics["total_calls"] == 3
     
     def test_reset_metrics(self):

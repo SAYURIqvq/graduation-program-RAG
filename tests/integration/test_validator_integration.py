@@ -6,7 +6,7 @@ Tests Validator Agent integration with:
 - Config
 - Planner Agent (pipeline)
 - Retry loops
-- LLM (Qwen via DashScope)
+- LLM (DeepSeek via DashScope)
 """
 
 import pytest

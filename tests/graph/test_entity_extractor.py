@@ -1,4 +1,4 @@
-"""Test Entity Extractor - Week 9 Day 1"""
+"""Test Entity extractor"""
 
 import sys
 from pathlib import Path

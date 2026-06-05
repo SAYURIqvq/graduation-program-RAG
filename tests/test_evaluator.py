@@ -1,5 +1,5 @@
 """
-Test custom evaluator - Week 5 Day 2
+Test custom evaluator - current evaluator
 """
 
 import sys

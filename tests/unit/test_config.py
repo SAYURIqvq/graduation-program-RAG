@@ -183,7 +183,7 @@ class TestFieldTypes:
             assert settings.anthropic_auth_token is None or isinstance(
                 settings.anthropic_auth_token, str
             )
-            assert isinstance(settings.voyage_api_key, str)
+            assert settings.voyage_api_key is None or isinstance(settings.voyage_api_key, str)
             assert isinstance(settings.llm_model, str)
             assert isinstance(settings.log_level, str)
         except ValidationError:

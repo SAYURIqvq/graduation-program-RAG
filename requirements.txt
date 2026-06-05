@@ -57,11 +57,11 @@ pydantic-settings>=2.0.0        # ← NEW: Settings management
 streamlit>=1.28.0
 
 # ============================================
-# DATABASE (Optional - if using PostgreSQL)
+# DATABASE
 # ============================================
 
 # ============================================
-# LOCAL EMBEDDINGS (Optional - if not using Voyage AI)
+# LOCAL EMBEDDINGS
 # ============================================
 
 # ============================================

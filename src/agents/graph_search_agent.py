@@ -1,5 +1,5 @@
 """
-Graph Search Agent - Week 10 Day 3
+Graph search agent
 Real implementation using GraphRetrieval.
 """
 

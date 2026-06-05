@@ -1,4 +1,4 @@
-"""Test Graph Traversal Agent - Week 10 Day 1"""
+"""Test Graph traversal agent"""
 
 import sys
 from pathlib import Path

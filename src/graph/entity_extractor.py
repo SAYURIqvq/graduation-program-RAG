@@ -1,5 +1,5 @@
 """
-Entity Extractor - Week 9 Day 1
+Entity extractor
 Extract named entities from text using spaCy NER.
 """
 

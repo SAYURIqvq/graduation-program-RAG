@@ -13,7 +13,7 @@ from langchain_core.language_models.chat_models import BaseChatModel
 from src.agents.base_agent import BaseAgent
 from src.models.agent_state import AgentState
 from src.config import get_settings
-from src.llm.qwen import create_qwen_chat_model
+from src.llm.chat_model import create_chat_model
 from src.utils.logger import setup_logger
 from src.utils.exceptions import AgenticRAGException
 
@@ -74,8 +74,8 @@ class CriticAgent(BaseAgent):
         
         Example:
             >>> from src.config import get_settings
-            >>> from src.llm.qwen import create_qwen_chat_model
-            >>> llm = create_qwen_chat_model(get_settings(), temperature=0.0)
+            >>> from src.llm.chat_model import create_chat_model
+            >>> llm = create_chat_model(get_settings(), temperature=0.0)
             >>> agent = CriticAgent(llm=llm, quality_threshold=0.8)
         """
         super().__init__(name="critic", version="1.0.0")
@@ -84,7 +84,7 @@ class CriticAgent(BaseAgent):
         
         # Initialize LLM
         if llm is None:
-            self.llm = create_qwen_chat_model(
+            self.llm = create_chat_model(
                 settings,
                 temperature=0.0,  # Deterministic for consistency
                 max_tokens=2000,

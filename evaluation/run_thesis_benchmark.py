@@ -8,7 +8,7 @@ Usage:
   python evaluation/run_thesis_benchmark.py --no-ragas
   python evaluation/run_thesis_benchmark.py --ragas-only
 
-Outputs: results/thesis/experiment_table.csv, summary_table.md, case_studies/
+Outputs: experiment_table.csv, summary_table.md, custom_metrics_summary.md, and case_studies/ under the selected output directory
 """
 
 from __future__ import annotations
@@ -773,7 +773,7 @@ def main() -> None:
     parser.add_argument(
         "--ragas-only",
         action="store_true",
-        help="Only RAGAS on existing results/thesis/answers.json",
+        help="Only run RAGAS on an existing answers.json in the selected output directory",
     )
     parser.add_argument("--output", type=Path, default=OUTPUT_DIR)
     parser.add_argument(

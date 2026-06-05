@@ -66,7 +66,7 @@ Use the production retrieval agents under `src/retrieval/` for application and b
 | Keyword search | `src/retrieval/keyword_search.py` |
 | Graph search | `src/retrieval/graph_search.py` |
 
-The files under `src/agents/retrieval/` are legacy test-oriented agents and should not be described as the main production retrieval path.
+Production retrieval agents live under `src/retrieval/` and are the only retrieval path described for the current application.
 
 ## Reliability Design
 

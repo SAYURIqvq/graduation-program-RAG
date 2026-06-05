@@ -9,7 +9,7 @@ from langchain_core.language_models.chat_models import BaseChatModel
 from src.agents.base_agent import BaseAgent
 from src.models.agent_state import AgentState, Strategy
 from src.config import get_settings
-from src.llm.qwen import create_qwen_chat_model
+from src.llm.chat_model import create_chat_model
 from src.utils.exceptions import AgenticRAGException
 
 
@@ -24,7 +24,7 @@ class QueryDecomposer(BaseAgent):
     def __init__(self, llm: BaseChatModel = None):
         super().__init__(name="query_decomposer", version="1.0.0")
         settings = get_settings()
-        self.llm = llm or create_qwen_chat_model(settings, temperature=0.0, max_tokens=1000)
+        self.llm = llm or create_chat_model(settings, temperature=0.0, max_tokens=1000)
     
     def execute(self, state: AgentState) -> AgentState:
         """

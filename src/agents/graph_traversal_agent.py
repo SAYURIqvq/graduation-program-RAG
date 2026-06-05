@@ -1,5 +1,5 @@
 """
-Graph Traversal Agent - Week 10 Day 1
+Graph traversal agent
 Navigate knowledge graph to find relationships between entities.
 """
 

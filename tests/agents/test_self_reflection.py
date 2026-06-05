@@ -1,6 +1,6 @@
 """
 Test Self-Reflection Loop (Writer + Critic).
-Week 5 Day 1 - Manual testing via script.
+Manual self-reflection testing script.
 """
 
 import sys
@@ -197,7 +197,7 @@ def test_regeneration_trigger():
 def main():
     """Run all tests."""
     print("\n" + "="*70)
-    print("🧪 SELF-REFLECTION TESTING SUITE - Week 5 Day 1")
+    print("🧪 SELF-REFLECTION TESTING SUITE")
     print("="*70)
     print("\nTesting Writer → Critic → Self-Reflection Loop")
     print("\nThis will test:")

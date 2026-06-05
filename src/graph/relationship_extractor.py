@@ -1,5 +1,5 @@
 """
-Relationship Extractor - Week 9 Day 2
+Relationship extractor
 Extract relationships between entities using dependency parsing.
 """
 

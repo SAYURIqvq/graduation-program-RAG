@@ -4,7 +4,7 @@ Integration tests for Planner Agent with full system.
 Tests Planner Agent integration with:
 - AgentState
 - Config
-- LLM (Qwen via DashScope)
+- LLM (DeepSeek via DashScope)
 - Multi-agent workflows
 """
 
@@ -15,7 +15,7 @@ from langchain_core.language_models.chat_models import BaseChatModel
 from src.agents.planner import PlannerAgent
 from src.models.agent_state import AgentState, Strategy
 from src.config import get_settings
-from src.llm.qwen import create_qwen_chat_model
+from src.llm.chat_model import create_chat_model
 
 
 @pytest.fixture
@@ -27,7 +27,7 @@ def real_llm():
     """
     try:
         settings = get_settings()
-        llm = create_qwen_chat_model(settings, temperature=0.0)
+        llm = create_chat_model(settings, temperature=0.0)
         return llm
     except Exception:
         pytest.skip("DashScope API key not configured")
@@ -72,7 +72,7 @@ class TestPlannerWithConfig:
 
 
 class TestPlannerWithRealLLM:
-    """Tests with actual Claude API (optional, requires API key)"""
+    """Tests with actual configured LLM API (optional, requires API key)"""
     
     def test_planner_with_real_api_simple_query(self, planner_with_real_llm):
         """Test planner with real API for simple query"""

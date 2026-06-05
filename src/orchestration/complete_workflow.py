@@ -57,9 +57,9 @@ class CompleteAgenticRAGWorkflow:
         
     Example:
         >>> from src.config import get_settings
-        >>> from src.llm.qwen import create_qwen_chat_model
+        >>> from src.llm.chat_model import create_chat_model
         >>> 
-        >>> llm = create_qwen_chat_model(get_settings())
+        >>> llm = create_chat_model(get_settings())
         >>> 
         >>> workflow = CompleteAgenticRAGWorkflow(
         ...     planner=PlannerAgent(llm=llm),

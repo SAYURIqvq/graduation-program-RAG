@@ -1,5 +1,5 @@
 """
-Test Query Type Coverage - Week 10 Day 4
+Test Query Type Coverage - current integration tests
 Test graph search with various query types.
 """
 

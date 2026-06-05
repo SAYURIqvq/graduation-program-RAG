@@ -1,5 +1,5 @@
 """
-Ablation Studies - Week 11 Day 1-2
+Ablation study utilities
 Measure the impact of each system component.
 """
 

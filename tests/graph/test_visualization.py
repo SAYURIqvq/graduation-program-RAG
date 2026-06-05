@@ -1,4 +1,4 @@
-"""Test Graph Visualization - Week 9 Day 4"""
+"""Test Graph Visualization - current graph visualization tests"""
 
 import sys
 from pathlib import Path

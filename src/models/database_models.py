@@ -63,7 +63,7 @@ class Chunk(Base):
     
     # Vector info (reference to ChromaDB)
     vector_id = Column(String(100), unique=True)  # ID in ChromaDB
-    embedding_model = Column(String(50), default='voyage-large-2')
+    embedding_model = Column(String(50), default='BAAI/bge-large-en-v1.5')
     
     # Metadata
     created_at = Column(DateTime, default=datetime.utcnow)

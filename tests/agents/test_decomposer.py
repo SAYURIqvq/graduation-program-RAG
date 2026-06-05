@@ -1,4 +1,4 @@
-"""Test Query Decomposer - Week 5 Day 4"""
+"""Test Query Decomposer - current query decomposition tests"""
 
 import sys
 from pathlib import Path

@@ -290,7 +290,7 @@ class EmbeddingGenerator:
         Get embedding dimension for the current model.
         
         Returns:
-            Embedding dimension (e.g., 1536 for voyage-large-2)
+            Embedding dimension (e.g., 1536 for BAAI/bge-large-en-v1.5)
         
         Example:
             >>> dim = generator.get_embedding_dimension()
@@ -298,7 +298,7 @@ class EmbeddingGenerator:
         """
         if self._provider == "voyage":
             model_dimensions = {
-                "voyage-large-2": 1536,
+                "BAAI/bge-large-en-v1.5": 1536,
                 "voyage-2": 1024,
                 "voyage-code-2": 1536,
                 "voyage-lite-02-instruct": 1024,

@@ -1,5 +1,5 @@
 """
-Knowledge Graph Builder - Week 9 Day 3
+Knowledge graph builder
 Build NetworkX graph from entities and relationships.
 """
 

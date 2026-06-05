@@ -1,5 +1,5 @@
 """
-Performance Tracker - Week 5 Day 6
+Performance tracker for query latency and retrieval metrics
 Track latency, cache hits, and agent execution times.
 """
 

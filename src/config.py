@@ -30,12 +30,12 @@ class Settings(BaseSettings):
     )
     voyage_api_key: Optional[str] = Field(
         default=None,
-        description="Voyage AI API key for embeddings (required for real embeddings)",
+        description="Voyage AI API key for optional Voyage embedding models",
     )
     cohere_api_key: Optional[str] = Field(None, description="Cohere API key for reranking (optional)")
     
     # ===== Database Configuration =====
-    database_url: str = Field(default="postgresql://localhost:5432/agentic_rag", description="PostgreSQL connection string")
+    database_url: str = Field(default="sqlite:///data/agentic_rag.db", description="database connection string")
     redis_url: str = Field(default="redis://localhost:6379", description="Redis connection string")
     chroma_persist_dir: str = Field(default="./data/chroma", description="ChromaDB persistence directory")
     collection_name: str = Field(default="documents", description="ChromaDB collection name")

@@ -1,5 +1,5 @@
 """
-Simple Custom Evaluator - Week 5 Day 2
+Simple custom evaluator for lightweight answer quality metrics
 No external dependencies (no RAGAS needed).
 """
 
@@ -142,3 +142,28 @@ class SimpleEvaluator:
         }
         
         return aggregated
+
+    def evaluate_rag_system(
+        self,
+        questions: List[str],
+        answers: List[str],
+        contexts: List[List[str]],
+        ground_truths: List[str] = None,
+    ) -> Dict[str, float]:
+        """Compatibility wrapper for tests and lightweight scripts."""
+        class _ContextChunk:
+            def __init__(self, text: str):
+                self.text = text
+
+        chunks_list = [
+            [_ContextChunk(text) for text in case_contexts]
+            for case_contexts in contexts
+        ]
+        metadata_list = [{"final_score": 0.0} for _ in questions]
+        summary = self.evaluate_batch(questions, answers, chunks_list, metadata_list)
+        return {
+            "citation_rate": summary["avg_citation_rate"],
+            "context_usage": summary["avg_context_usage"],
+            "quality_score": summary["avg_quality_score"],
+            "overall": summary["avg_overall"],
+        }

@@ -42,8 +42,8 @@ class PlannerAgent(BaseAgent):
         
     Example:
         >>> from src.config import get_settings
-        >>> from src.llm.qwen import create_qwen_chat_model
-        >>> llm = create_qwen_chat_model(get_settings())
+        >>> from src.llm.chat_model import create_chat_model
+        >>> llm = create_chat_model(get_settings())
         >>> planner = PlannerAgent(llm=llm)
         >>> 
         >>> state = AgentState(query="What is Python?")
@@ -68,7 +68,7 @@ class PlannerAgent(BaseAgent):
             multihop_threshold: Threshold for multihop strategy (default: from config)
         
         Example:
-            >>> llm = ChatAnthropic(model="claude-3-5-sonnet-20241022")
+            >>> llm = create_chat_model(get_settings())
             >>> planner = PlannerAgent(llm=llm)
         """
         super().__init__(name="planner", version="1.0.0")
@@ -272,7 +272,7 @@ class PlannerAgent(BaseAgent):
         """
         Use LLM to assess semantic complexity.
         
-        Asks Claude to rate the query complexity based on:
+        Asks the configured LLM to rate the query complexity based on:
         - Number of concepts involved
         - Depth of reasoning required
         - Need for multi-step thinking

@@ -23,7 +23,7 @@ PLANNER_COMPLEXITY_THRESHOLD_MULTIHOP=0.7
 
 ## LLM Backend
 
-The project uses `create_chat_model` through the backward-compatible alias `create_qwen_chat_model`. Despite the legacy function name, the current backend is DeepSeek through an Anthropic-compatible API.
+The project uses `create_chat_model` through the backward-compatible alias `create_chat_model`. Despite the legacy function name, the current backend is DeepSeek through an Anthropic-compatible API.
 
 ```python
 from src.config import get_settings

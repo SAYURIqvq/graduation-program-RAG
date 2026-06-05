@@ -38,8 +38,8 @@ class ValidatorAgent(BaseAgent):
         
     Example:
         >>> from src.config import get_settings
-        >>> from src.llm.qwen import create_qwen_chat_model
-        >>> llm = create_qwen_chat_model(get_settings())
+        >>> from src.llm.chat_model import create_chat_model
+        >>> llm = create_chat_model(get_settings())
         >>> validator = ValidatorAgent(llm=llm)
         >>> 
         >>> state = AgentState(query="What is Python?", chunks=[...])
@@ -64,7 +64,7 @@ class ValidatorAgent(BaseAgent):
             max_retries: Maximum retry attempts (default: from config)
         
         Example:
-            >>> llm = ChatAnthropic(model="claude-3-5-sonnet-20241022")
+            >>> llm = create_chat_model(get_settings())
             >>> validator = ValidatorAgent(llm=llm, threshold=0.75)
         """
         super().__init__(name="validator", version="1.0.0")
@@ -217,7 +217,7 @@ class ValidatorAgent(BaseAgent):
         """
         Check if chunks are relevant to query using LLM.
         
-        Asks Claude to assess how well chunks relate to the query.
+        Asks the configured LLM to assess how well chunks relate to the query.
         
         Args:
             query: User query string
@@ -226,6 +226,9 @@ class ValidatorAgent(BaseAgent):
         Returns:
             Relevance score (0.0-1.0)
         """
+        if not chunks:
+            return 0.0
+
         # Prepare context from top chunks
         top_chunks = sorted(chunks, key=lambda c: c.score or 0.0, reverse=True)[:5]
         context = "\n\n".join([
