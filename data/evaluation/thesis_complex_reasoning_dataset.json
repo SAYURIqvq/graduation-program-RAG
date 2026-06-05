@@ -1,0 +1,985 @@
+{
+  "description": "Complex reasoning stress benchmark for hierarchical agentic RAG evaluation.",
+  "documents": [
+    "thesis_doc_01_rag_system_design.docx",
+    "thesis_doc_02_multi_agent_workflow.docx",
+    "thesis_doc_03_graph_reasoning_case_study.docx",
+    "thesis_doc_04_evaluation_and_ablation_report.docx"
+  ],
+  "test_cases": [
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "Explain how the RAG design connects retrieved chunks, citation rules and the reliability gate to prevent unsupported answers.",
+      "ground_truth": "Retrieved chunks provide evidence, citations connect claims to those chunks, and the reliability gate checks citations, available context and final answer support so unsupported fluent answers are not returned.",
+      "category": "self-reflection reliability reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "retrieved chunks",
+        "citations",
+        "reliability gate",
+        "unsupported"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "citation",
+        "reliability gate",
+        "fallback"
+      ]
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "Why can a vector only baseline fail on broad summary questions, and how does the agentic design reduce that risk?",
+      "ground_truth": "A vector only baseline may return one narrow child chunk and miss evidence in other sections. The agentic design reduces the risk by combining vector and BM25 retrieval, synthesising duplicate evidence and checking the final answer.",
+      "category": "evaluation and ablation explanation",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "vector only",
+        "narrow child chunk",
+        "BM25",
+        "synthesis",
+        "final answer"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "failure",
+        "BM25",
+        "synthesising"
+      ]
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "If a rollback question mentions an approval exception that is not in the document, what should the system answer and why?",
+      "ground_truth": "The system should describe the available rollback rule if retrieved, then state that the approval exception is not provided because the missing information rule requires the writer to avoid unsupported claims.",
+      "category": "missing information handling",
+      "difficulty": "hard",
+      "expected_missing": true,
+      "multi_hop_terms": [
+        "rollback",
+        "approval exception",
+        "not provided",
+        "unsupported"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "missing information",
+        "unsupported",
+        "provided documents"
+      ]
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "Compare the reliability value and latency cost of the agentic system against the baseline in this design.",
+      "ground_truth": "The agentic system improves reliability through coordinated retrieval, synthesis and final answer checks, but it is slower because it performs multiple retrieval and quality control steps. The baseline is faster because it uses one vector retrieval and one generation step.",
+      "category": "evaluation and ablation explanation",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "coordinated retrieval",
+        "synthesis",
+        "quality control",
+        "latency",
+        "baseline"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "tradeoff",
+        "latency",
+        "quality control"
+      ]
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "Which evidence supports using BM25 together with vector retrieval for reliable RAG?",
+      "ground_truth": "Vector retrieval handles paraphrased semantic questions, while BM25 handles exact terms, names, rare policy labels and measurements. The coordinator merges both so semantic and lexical evidence can be considered.",
+      "category": "evidence selection",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "vector retrieval",
+        "BM25",
+        "exact terms",
+        "paraphrased",
+        "coordinator"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "BM25",
+        "exact terms",
+        "coordinator"
+      ]
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "How should the fallback rule behave when the reliability gate fails but retrieved context is available?",
+      "ground_truth": "If the reliability gate fails while context is available, the system can fall back to a deterministic evidence summary instead of returning an unsupported fluent answer.",
+      "category": "self-reflection reliability reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "reliability gate",
+        "fails",
+        "context",
+        "deterministic evidence summary",
+        "unsupported"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "fallback",
+        "deterministic evidence summary",
+        "unsupported"
+      ]
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "Trace the full workflow for a complex query from planning to final reliability checking.",
+      "ground_truth": "A complex query flows through Planner, Query Decomposer, Retrieval Coordinator, Validator, Synthesis Agent, Writer Agent, Critic Agent and Reliability Gate.",
+      "category": "multi-hop relationship reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "Planner",
+        "Query Decomposer",
+        "Retrieval Coordinator",
+        "Validator",
+        "Synthesis Agent",
+        "Writer Agent",
+        "Critic Agent",
+        "Reliability Gate"
+      ],
+      "graph_terms": [
+        "planner",
+        "retrieval coordinator",
+        "critic agent",
+        "reliability gate"
+      ],
+      "evidence_terms": [
+        "Planner",
+        "Query Decomposer",
+        "Retrieval Coordinator",
+        "Validator",
+        "Synthesis Agent",
+        "Writer Agent",
+        "Critic Agent",
+        "Reliability Gate"
+      ]
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "How does validator retry make the agentic workflow more reliable than a single retrieval baseline?",
+      "ground_truth": "The Validator can detect insufficient evidence and return the workflow to the Retrieval Coordinator for another retrieval round, while a single retrieval baseline proceeds directly with the first retrieved evidence.",
+      "category": "self-reflection reliability reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "Validator",
+        "insufficient",
+        "Retrieval Coordinator",
+        "another retrieval round",
+        "baseline"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "validation",
+        "retry",
+        "insufficient"
+      ]
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "Explain the connection between the Writer Agent, Critic Agent and regeneration loop.",
+      "ground_truth": "The Writer Agent produces an answer, the Critic Agent evaluates accuracy, relevance, completeness and citation quality, and if the threshold is not satisfied the Critic returns feedback so the Writer can generate a revised answer.",
+      "category": "multi-hop relationship reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "Writer Agent",
+        "Critic Agent",
+        "accuracy",
+        "citation quality",
+        "feedback",
+        "revised answer"
+      ],
+      "graph_terms": [
+        "writer agent",
+        "critic agent",
+        "regeneration"
+      ],
+      "evidence_terms": [
+        "Writer Agent",
+        "Critic Agent",
+        "accuracy",
+        "citation quality",
+        "feedback",
+        "revised answer"
+      ]
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "Why does the benchmark disable critic regeneration while still recording critic scores?",
+      "ground_truth": "Critic regeneration can be disabled to keep experiments practical while critic scores are still recorded, preserving evidence of self reflection behaviour without excessive latency.",
+      "category": "evaluation and ablation explanation",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "critic regeneration",
+        "disabled",
+        "practical",
+        "critic scores",
+        "latency"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "benchmark",
+        "critic scores",
+        "practical"
+      ]
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "Which metadata fields make the multi agent workflow more transparent than black box generation?",
+      "ground_truth": "The workflow stores selected strategy, sub query count, retrieval agents used, retrieved chunk count, validation decision, critic score and final reliability status, making the process transparent.",
+      "category": "evidence selection",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "strategy",
+        "sub query count",
+        "retrieval agents",
+        "validation decision",
+        "critic score",
+        "reliability status"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "metadata",
+        "transparent",
+        "critic score"
+      ]
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "When should the full hierarchy be preferred over baseline RAG according to the workflow document?",
+      "ground_truth": "The full hierarchy should be preferred for high reliability questions that need decomposition, multi source evidence, missing information handling or relationship reasoning, while direct facts may use baseline retrieval.",
+      "category": "evaluation and ablation explanation",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "high reliability",
+        "decomposition",
+        "multi source evidence",
+        "missing information",
+        "relationship reasoning",
+        "direct facts"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "not intended",
+        "baseline",
+        "high reliability"
+      ]
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "Trace the dependency path from Orion Service to Compliance Review in the incident.",
+      "ground_truth": "The dependency path is Orion Service to Billing API to Cache Layer to Search Index to Audit Dashboard to Compliance Review.",
+      "category": "graph dependency reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "Orion Service",
+        "Billing API",
+        "Cache Layer",
+        "Search Index",
+        "Audit Dashboard",
+        "Compliance Review"
+      ],
+      "graph_terms": [
+        "orion service",
+        "billing api",
+        "cache layer",
+        "search index",
+        "audit dashboard",
+        "compliance review"
+      ],
+      "evidence_terms": [
+        "Orion Service",
+        "Billing API",
+        "Cache Layer",
+        "Search Index",
+        "Audit Dashboard",
+        "Compliance Review"
+      ]
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "Explain why a Cache Layer failure can affect Compliance Review even when the dashboard is healthy.",
+      "ground_truth": "The Cache Layer feeds the Search Index, the Audit Dashboard displays invoice status from the Search Index, and Compliance Review depends on the dashboard, so Cache Layer failure can affect Compliance Review through the dependency chain.",
+      "category": "graph dependency reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "Cache Layer",
+        "Search Index",
+        "Audit Dashboard",
+        "Compliance Review",
+        "dependency chain"
+      ],
+      "graph_terms": [
+        "cache layer",
+        "search index",
+        "audit dashboard",
+        "compliance review"
+      ],
+      "evidence_terms": [
+        "Cache Layer",
+        "Search Index",
+        "Audit Dashboard",
+        "Compliance Review",
+        "dependency chain"
+      ]
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "Connect the schema migration field change to the downstream compliance effect.",
+      "ground_truth": "The migration replaced status_code with invoice_state. The Cache Layer still expected status_code, records lacked searchable status, the Search Index indexed incomplete records, the Audit Dashboard showed pending review, and Compliance Review was affected.",
+      "category": "graph dependency reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "invoice_state",
+        "status_code",
+        "Cache Layer",
+        "Search Index",
+        "Audit Dashboard",
+        "Compliance Review"
+      ],
+      "graph_terms": [
+        "invoice_state",
+        "status_code",
+        "cache layer",
+        "search index",
+        "audit dashboard"
+      ],
+      "evidence_terms": [
+        "invoice_state",
+        "status_code",
+        "Cache Layer",
+        "Search Index",
+        "Audit Dashboard",
+        "Compliance Review"
+      ]
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "Which evidence shows that the Audit Dashboard was only a downstream display component, not the root cause?",
+      "ground_truth": "The document states that the dashboard only displayed the indexed state, while the direct cause was the mismatch between invoice_state and status_code in the Cache Layer.",
+      "category": "evidence selection",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "dashboard",
+        "indexed state",
+        "direct cause",
+        "invoice_state",
+        "status_code",
+        "Cache Layer"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "dashboard",
+        "indexed state",
+        "direct cause"
+      ]
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "How do the ownership responsibilities relate to the recovery procedure?",
+      "ground_truth": "Finance Systems owns the Billing API and maps invoice_state back to status_code, Reliability owns the Cache Layer and clears stale entries, Platform owns the Search Index and rebuilds it, and Compliance verifies the Audit Dashboard.",
+      "category": "multi-hop relationship reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "Finance Systems",
+        "Billing API",
+        "Reliability",
+        "Cache Layer",
+        "Platform",
+        "Search Index",
+        "Compliance"
+      ],
+      "graph_terms": [
+        "finance systems",
+        "billing api",
+        "reliability",
+        "cache layer",
+        "platform",
+        "search index",
+        "compliance"
+      ],
+      "evidence_terms": [
+        "Finance Systems",
+        "Billing API",
+        "Reliability",
+        "Cache Layer",
+        "Platform",
+        "Search Index",
+        "Compliance"
+      ]
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "Why are a compatibility contract and relationship test recommended together?",
+      "ground_truth": "The compatibility contract controls the Billing API and Cache Layer schema boundary, while the relationship test checks whether the Search Index and Audit Dashboard receive the expected status value after migration.",
+      "category": "graph dependency reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "compatibility contract",
+        "Billing API",
+        "Cache Layer",
+        "relationship test",
+        "Search Index",
+        "Audit Dashboard"
+      ],
+      "graph_terms": [
+        "billing api",
+        "cache layer",
+        "search index",
+        "audit dashboard"
+      ],
+      "evidence_terms": [
+        "compatibility contract",
+        "Billing API",
+        "Cache Layer",
+        "relationship test",
+        "Search Index",
+        "Audit Dashboard"
+      ]
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "What exact revenue impact and final regulatory conclusion are reported for the Orion incident?",
+      "ground_truth": "The document does not provide exact revenue impact or a final regulatory conclusion.",
+      "category": "missing information handling",
+      "difficulty": "hard",
+      "expected_missing": true,
+      "multi_hop_terms": [
+        "revenue impact",
+        "regulatory conclusion",
+        "not provide"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "does not provide",
+        "revenue impact",
+        "regulatory conclusion"
+      ]
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "Explain how the main result summary supports the claim that agentic RAG improves reliability but costs latency.",
+      "ground_truth": "The proposed system improves RAGAS overall from 0.742 to 0.846, faithfulness from 0.710 to 0.890, citation rate from 0.78 to 0.96 and context usage from 0.46 to 0.61, while latency increases from 18.4 to 31.7 seconds.",
+      "category": "evaluation and ablation explanation",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "0.742",
+        "0.846",
+        "0.710",
+        "0.890",
+        "0.78",
+        "0.96",
+        "18.4",
+        "31.7"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "faithfulness",
+        "citation rate",
+        "latency"
+      ]
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "Which ablation result best supports keeping the Reliability Gate in the proposed system?",
+      "ground_truth": "Removing the Reliability Gate increased unsupported final answers from 3 percent to 11 percent, supporting the need to keep the gate.",
+      "category": "evidence selection",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "Reliability Gate",
+        "unsupported final answers",
+        "3 percent",
+        "11 percent"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "Reliability Gate",
+        "unsupported",
+        "11 percent"
+      ]
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "How do BM25, Critic Agent and Reliability Gate removals affect different parts of reliability?",
+      "ground_truth": "Removing BM25 reduces exact fact retrieval by 12 percent, removing the Critic Agent reduces faithfulness by 9 percent, and removing the Reliability Gate increases unsupported final answers from 3 percent to 11 percent.",
+      "category": "evaluation and ablation explanation",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "BM25",
+        "12 percent",
+        "Critic Agent",
+        "9 percent",
+        "Reliability Gate",
+        "11 percent"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "BM25",
+        "Critic Agent",
+        "Reliability Gate"
+      ]
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "Why does graph search matter specifically for the graph reasoning subset?",
+      "ground_truth": "Graph search matters because relationship questions require connecting services, teams, risks and downstream effects. With graph search the subset scored 0.83 overall, while without graph search it scored 0.71.",
+      "category": "graph dependency reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "graph search",
+        "relationship questions",
+        "services",
+        "teams",
+        "risks",
+        "downstream effects",
+        "0.83",
+        "0.71"
+      ],
+      "graph_terms": [
+        "graph search",
+        "relationship questions",
+        "services",
+        "teams",
+        "risks"
+      ],
+      "evidence_terms": [
+        "graph search",
+        "relationship questions",
+        "services",
+        "teams",
+        "risks",
+        "downstream effects",
+        "0.83",
+        "0.71"
+      ]
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "What public leaderboard rank and external competition score are reported for the proposed system?",
+      "ground_truth": "The document does not provide a public leaderboard rank or external competition score.",
+      "category": "missing information handling",
+      "difficulty": "hard",
+      "expected_missing": true,
+      "multi_hop_terms": [
+        "leaderboard",
+        "competition score",
+        "not provide"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "not provide",
+        "leaderboard",
+        "competition"
+      ]
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "How should the latency cost be interpreted in high reliability and low risk settings?",
+      "ground_truth": "The latency cost should be reported as a limitation. It is acceptable in high reliability settings requiring validation or multi hop reasoning, while a baseline route may be preferable for low risk direct lookup settings.",
+      "category": "evaluation and ablation explanation",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "latency",
+        "limitation",
+        "high reliability",
+        "multi hop reasoning",
+        "baseline",
+        "direct lookup"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "latency",
+        "limitation",
+        "baseline route"
+      ]
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "Why is a citation valid only when it directly supports the sentence, and how does this relate to the reliability gate?",
+      "ground_truth": "A citation is valid only when the cited chunk directly supports the sentence. The reliability gate then checks citations, citation numbers and retrieved context so unsupported claims are blocked.",
+      "category": "self-reflection reliability reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "directly supports",
+        "reliability gate",
+        "citation numbers",
+        "retrieved context",
+        "unsupported"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "citation",
+        "directly supports",
+        "gate"
+      ]
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "What should the system do if a user asks for an unapproved rollback exception and only related deployment rules are retrieved?",
+      "ground_truth": "It should answer only with supported deployment or rollback rules and state that an unapproved rollback exception is not contained in the provided documents.",
+      "category": "missing information handling",
+      "difficulty": "hard",
+      "expected_missing": true,
+      "multi_hop_terms": [
+        "rollback",
+        "exception",
+        "not contained",
+        "provided documents"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "not contain",
+        "unsupported",
+        "provided documents"
+      ]
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "How do Planner strategy selection and Query Decomposer output influence retrieval behaviour?",
+      "ground_truth": "The Planner selects a strategy based on complexity. Complex questions use the Query Decomposer to create sub questions, and the Retrieval Coordinator retrieves evidence for those sub questions.",
+      "category": "multi-hop relationship reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "Planner",
+        "strategy",
+        "Query Decomposer",
+        "sub questions",
+        "Retrieval Coordinator"
+      ],
+      "graph_terms": [
+        "planner",
+        "query decomposer",
+        "retrieval coordinator"
+      ],
+      "evidence_terms": [
+        "Planner",
+        "strategy",
+        "Query Decomposer",
+        "sub questions",
+        "Retrieval Coordinator"
+      ]
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "What information is not provided about the exact model hardware used by the workflow agents?",
+      "ground_truth": "The document does not provide exact model hardware for the workflow agents.",
+      "category": "missing information handling",
+      "difficulty": "hard",
+      "expected_missing": true,
+      "multi_hop_terms": [
+        "model hardware",
+        "not provide",
+        "workflow agents"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "not provide",
+        "hardware"
+      ]
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "How does the field mismatch move through records, indexing, dashboard status and compliance review?",
+      "ground_truth": "The mismatch between invoice_state and status_code causes records to lack searchable status, the Search Index indexes incomplete records, the Audit Dashboard shows pending review, and Compliance Review is affected.",
+      "category": "graph dependency reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "invoice_state",
+        "status_code",
+        "records",
+        "Search Index",
+        "Audit Dashboard",
+        "Compliance Review"
+      ],
+      "graph_terms": [
+        "invoice_state",
+        "status_code",
+        "search index",
+        "audit dashboard",
+        "compliance review"
+      ],
+      "evidence_terms": [
+        "invoice_state",
+        "status_code",
+        "records",
+        "Search Index",
+        "Audit Dashboard",
+        "Compliance Review"
+      ]
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "Which unavailable incident details should the system refuse to invent?",
+      "ground_truth": "The system should refuse to invent customer names, exact revenue impact, affected invoice count, public incident severity grade and final regulatory conclusion because they are not provided.",
+      "category": "missing information handling",
+      "difficulty": "hard",
+      "expected_missing": true,
+      "multi_hop_terms": [
+        "customer names",
+        "revenue impact",
+        "affected invoice",
+        "severity grade",
+        "regulatory conclusion",
+        "not provided"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "does not provide",
+        "customer names",
+        "regulatory conclusion"
+      ]
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "Why is the complex benchmark not evidence that agentic RAG should replace baseline RAG for every query?",
+      "ground_truth": "The report says baseline can be faster and sufficient for simple factual questions, while the proposed system is most useful for citations, comparison, missing information, relationship reasoning or quality control.",
+      "category": "evaluation and ablation explanation",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "baseline",
+        "faster",
+        "simple factual",
+        "citations",
+        "missing information",
+        "relationship reasoning",
+        "quality control"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "does not claim",
+        "simple factual",
+        "quality control"
+      ]
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "How do custom metrics extend RAGAS for this thesis benchmark?",
+      "ground_truth": "Custom metrics add citation rate, citation based context usage, missing information accuracy, multi hop coverage, graph reasoning success, answer length, latency and retrieved chunk count to RAGAS metrics.",
+      "category": "evaluation and ablation explanation",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "citation rate",
+        "context usage",
+        "missing information accuracy",
+        "multi hop coverage",
+        "graph reasoning success",
+        "latency"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "custom metrics",
+        "RAGAS",
+        "graph reasoning success"
+      ]
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "Which evidence shows the workflow is intended for complex reliability tasks rather than every direct fact lookup?",
+      "ground_truth": "The document states that direct facts may use baseline retrieval, while the full hierarchy is intended for high reliability questions needing decomposition, multi source evidence, missing information handling or relationship reasoning.",
+      "category": "evidence selection",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "direct facts",
+        "baseline retrieval",
+        "full hierarchy",
+        "high reliability",
+        "decomposition",
+        "relationship reasoning"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "direct facts",
+        "baseline",
+        "full hierarchy"
+      ]
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "How do the Validator, Critic Agent and Reliability Gate provide three different reliability checks?",
+      "ground_truth": "The Validator checks evidence sufficiency before writing, the Critic Agent reviews answer quality and can request regeneration, and the Reliability Gate performs deterministic final checks before the response is returned.",
+      "category": "self-reflection reliability reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "Validator",
+        "evidence sufficiency",
+        "Critic Agent",
+        "regeneration",
+        "Reliability Gate",
+        "final checks"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "Validator",
+        "Critic Agent",
+        "Reliability Gate"
+      ]
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "Why is the Orion case suitable for graph based reasoning rather than isolated fact retrieval?",
+      "ground_truth": "The case requires connecting services, fields, teams, risks and downstream effects, including Orion Service, Billing API, Cache Layer, Search Index, Audit Dashboard and Compliance Review.",
+      "category": "graph dependency reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "services",
+        "fields",
+        "teams",
+        "risks",
+        "downstream effects",
+        "Compliance Review"
+      ],
+      "graph_terms": [
+        "orion service",
+        "billing api",
+        "cache layer",
+        "search index",
+        "audit dashboard",
+        "compliance review"
+      ],
+      "evidence_terms": [
+        "services",
+        "fields",
+        "teams",
+        "risks",
+        "downstream effects",
+        "Compliance Review"
+      ]
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "How do semantic evidence and exact lexical evidence work together in the retrieval coordinator?",
+      "ground_truth": "Vector retrieval supplies semantic evidence for paraphrased questions, BM25 supplies exact lexical evidence for rare terms and policy labels, and the retrieval coordinator merges both.",
+      "category": "multi-hop relationship reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "semantic evidence",
+        "exact lexical evidence",
+        "vector retrieval",
+        "BM25",
+        "retrieval coordinator"
+      ],
+      "graph_terms": [
+        "vector retrieval",
+        "bm25",
+        "retrieval coordinator"
+      ],
+      "evidence_terms": [
+        "semantic evidence",
+        "exact lexical evidence",
+        "vector retrieval",
+        "BM25",
+        "retrieval coordinator"
+      ]
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "Which result links graph search to downstream effects, teams and risks?",
+      "ground_truth": "The ablation study says graph search improved the graph reasoning subset from 0.71 to 0.83 because it helped questions connecting services, teams, risks and downstream effects.",
+      "category": "evidence selection",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "graph search",
+        "0.71",
+        "0.83",
+        "services",
+        "teams",
+        "risks",
+        "downstream effects"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "graph search",
+        "0.83",
+        "downstream effects"
+      ]
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "How does recording validation decision and critic score support evaluation?",
+      "ground_truth": "Recording validation decision and critic score, along with strategy and retrieval metadata, makes the workflow transparent and allows evaluation of evidence sufficiency and answer quality control.",
+      "category": "self-reflection reliability reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "validation decision",
+        "critic score",
+        "strategy",
+        "retrieval metadata",
+        "transparent",
+        "quality control"
+      ],
+      "graph_terms": [],
+      "evidence_terms": [
+        "metadata",
+        "validation decision",
+        "critic score"
+      ]
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "If someone blames Compliance Review for the incident, how should the graph chain correct that explanation?",
+      "ground_truth": "The graph chain shows Compliance Review depends on the Audit Dashboard, which depends on the Search Index, which depends on the Cache Layer. The direct cause was the Cache Layer field mismatch, not Compliance Review.",
+      "category": "graph dependency reasoning",
+      "difficulty": "hard",
+      "expected_missing": false,
+      "multi_hop_terms": [
+        "Compliance Review",
+        "Audit Dashboard",
+        "Search Index",
+        "Cache Layer",
+        "direct cause",
+        "field mismatch"
+      ],
+      "graph_terms": [
+        "compliance review",
+        "audit dashboard",
+        "search index",
+        "cache layer"
+      ],
+      "evidence_terms": [
+        "Compliance Review",
+        "Audit Dashboard",
+        "Search Index",
+        "Cache Layer",
+        "direct cause",
+        "field mismatch"
+      ]
+    }
+  ]
+}

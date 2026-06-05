@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# Virtual Environment
+env/
+venv/
+env_rag2/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Environment
+.env
+.env.local
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Data directory structure
+# Keep folders but ignore contents
+data/agentic_rag.db
+data/uploads/*.pdf
+data/uploads/*.docx
+data/uploads/*.txt
+data/chroma_db/*/
+data/test_*
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+# Generated indexes
+data/bm25_index.pkl
+*.pkl
+
+# Backup files
+*.backup
+
+# ChromaDB data
+data/chroma/
+data/chromadb/
+data/metrics.json
+data/chroma_db/
+data/chroma_db/

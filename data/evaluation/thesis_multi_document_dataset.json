@@ -1,0 +1,235 @@
+{
+  "description": "Controlled multi-document thesis benchmark for hierarchical agentic RAG evaluation.",
+  "documents": [
+    "thesis_doc_01_rag_system_design.docx",
+    "thesis_doc_02_multi_agent_workflow.docx",
+    "thesis_doc_03_graph_reasoning_case_study.docx",
+    "thesis_doc_04_evaluation_and_ablation_report.docx"
+  ],
+  "test_cases": [
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "What is the main purpose of the enterprise knowledge base RAG system?",
+      "ground_truth": "The system is designed for document grounded question answering over enterprise documents, with traceable answers supported by retrieved passages and inline citations.",
+      "category": "summary",
+      "difficulty": "easy"
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "Which file formats are supported during document ingestion?",
+      "ground_truth": "The document states that PDF, DOCX and text files are supported during ingestion.",
+      "category": "fact extraction",
+      "difficulty": "easy"
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "How do parent chunks and child chunks work in the retrieval design?",
+      "ground_truth": "Parent chunks preserve broader context, while child chunks provide precise searchable units. The retriever searches smaller child chunks while returning enough surrounding evidence for answer generation.",
+      "category": "method explanation",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "Compare vector retrieval and BM25 keyword retrieval in this design.",
+      "ground_truth": "Vector retrieval supports semantic matching for paraphrased questions, while BM25 keyword retrieval supports exact terms, names, measurements and policy labels. The coordinator combines both to improve evidence coverage.",
+      "category": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "How does the reliability gate relate citations to retrieved chunks?",
+      "ground_truth": "The reliability gate checks whether the answer contains citations, whether citation numbers refer to available chunks and whether retrieved context exists.",
+      "category": "relationship reasoning",
+      "difficulty": "hard"
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "Which evidence best supports the claim that the proposed system is more reliable than vector only RAG?",
+      "ground_truth": "The document states that the agentic system coordinates retrieval methods, synthesises duplicate evidence and checks the final answer, while vector only RAG can miss exact terms or return related but insufficient passages.",
+      "category": "evidence selection",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "What tradeoff is introduced by using the agentic system instead of the baseline?",
+      "ground_truth": "The agentic system reduces reliability risks but increases latency because it performs multiple retrieval and quality control steps, while the baseline is faster and simpler.",
+      "category": "limitations",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_01_rag_system_design.docx",
+      "question": "What exact production cost is reported for operating the enterprise RAG system?",
+      "ground_truth": "The document does not provide an exact production cost for operating the enterprise RAG system.",
+      "category": "missing information",
+      "difficulty": "hard"
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "What are the three levels in the hierarchical multi agent workflow?",
+      "ground_truth": "The three levels are the strategic level with the Planner Agent, the tactical level with agents such as the Decomposer, Coordinator, Validator, Writer, Critic and Reliability Gate, and the operational level with Vector, Keyword and optional Graph Search Agents.",
+      "category": "summary",
+      "difficulty": "easy"
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "Which agents are listed at the operational level?",
+      "ground_truth": "The operational level contains the Vector Search Agent, Keyword Search Agent and optional Graph Search Agent.",
+      "category": "fact extraction",
+      "difficulty": "easy"
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "How does the self reflection loop work?",
+      "ground_truth": "After the Writer Agent produces an answer, the Critic Agent evaluates accuracy, relevance, completeness and citation quality. If the answer is below threshold, feedback is returned and the Writer Agent generates a revised answer.",
+      "category": "method explanation",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "Compare the Planner Agent and the Retrieval Coordinator.",
+      "ground_truth": "The Planner Agent estimates query complexity and selects a strategy, while the Retrieval Coordinator launches the retrieval swarm and gathers evidence from vector, keyword and graph retrieval agents.",
+      "category": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "How is the Critic Agent connected to the Writer Agent in the workflow?",
+      "ground_truth": "The Critic Agent reviews the Writer Agent output and can request regeneration, sending feedback so the Writer Agent can create a revised answer.",
+      "category": "relationship reasoning",
+      "difficulty": "hard"
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "Which evidence shows that the workflow is transparent for evaluation?",
+      "ground_truth": "The document states that the system records metadata such as strategy, retrieval round, retrieved chunk count, validation status, critic score and reliability gate result.",
+      "category": "evidence selection",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "What limitation is placed on the reflection loop?",
+      "ground_truth": "The reflection loop is limited by a maximum number of iterations to prevent the workflow from becoming too slow or entering an endless cycle.",
+      "category": "limitations",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_02_multi_agent_workflow.docx",
+      "question": "What exact hardware configuration is used by the Planner Agent?",
+      "ground_truth": "The document does not provide an exact hardware configuration for the Planner Agent.",
+      "category": "missing information",
+      "difficulty": "hard"
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "What incident is described in the graph reasoning case study?",
+      "ground_truth": "The document describes the Orion deployment incident, where delayed invoice visibility followed a schema migration that changed the event payload used by downstream services.",
+      "category": "summary",
+      "difficulty": "easy"
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "Which teams own the Billing API and the Cache Layer?",
+      "ground_truth": "The Finance Systems Team owns the Billing API, and the Reliability Team owns the Cache Layer.",
+      "category": "fact extraction",
+      "difficulty": "easy"
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "What are the four steps in the recovery procedure?",
+      "ground_truth": "The four steps are mapping invoice_state back to status_code, clearing stale Cache Layer entries, triggering a Search Index rebuild and verifying the Audit Dashboard against corrected invoices.",
+      "category": "method explanation",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "Compare the direct cause and the downstream effect in the Orion incident.",
+      "ground_truth": "The direct cause is the mismatch between invoice_state and status_code in the Cache Layer. The downstream effect is incomplete indexing, which affects the Audit Dashboard and compliance review.",
+      "category": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "How does the Billing API affect the Audit Dashboard through the Cache Layer and Search Index?",
+      "ground_truth": "The Billing API writes normalised invoice records into the Cache Layer. The Search Index reads from the Cache Layer, and the Audit Dashboard displays invoice status using data from the Search Index.",
+      "category": "relationship reasoning",
+      "difficulty": "hard"
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "Which evidence shows that the Audit Dashboard was not the root cause?",
+      "ground_truth": "The document states that the dashboard only displays the indexed state and that the direct cause is the mismatch between invoice_state and status_code in the Cache Layer.",
+      "category": "evidence selection",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "What is the highest risk identified for future schema migrations?",
+      "ground_truth": "The highest risk is repeating the incident during future schema migrations.",
+      "category": "limitations",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_03_graph_reasoning_case_study.docx",
+      "question": "How many invoices were affected by the Orion incident?",
+      "ground_truth": "The document does not provide the number of affected invoices.",
+      "category": "missing information",
+      "difficulty": "hard"
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "What systems are compared in the evaluation report?",
+      "ground_truth": "The report compares a baseline vector only RAG system with a proposed hierarchical agentic RAG system.",
+      "category": "summary",
+      "difficulty": "easy"
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "What average RAGAS overall scores are reported for baseline and proposed systems?",
+      "ground_truth": "The baseline achieved an average RAGAS overall score of 0.742, while the proposed agentic RAG system achieved 0.846.",
+      "category": "fact extraction",
+      "difficulty": "easy"
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "How are RAGAS metrics and custom reliability metrics used in the report?",
+      "ground_truth": "RAGAS metrics measure faithfulness, answer relevancy, context precision and context recall. Custom metrics measure citation rate, citation based context usage, answer length, latency and retrieved chunk count.",
+      "category": "method explanation",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "Compare the reliability improvement and latency cost of the proposed system.",
+      "ground_truth": "The proposed system improves reliability, with citation rate increasing from 0.78 to 0.96 and context usage from 0.46 to 0.61, but average latency increases from 18.4 seconds to 31.7 seconds.",
+      "category": "comparison",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "How does graph search relate to the graph reasoning subset?",
+      "ground_truth": "Graph search is most useful for relationship questions. In the graph reasoning subset, the system with graph search scored 0.83 overall, while the same system without graph search scored 0.71.",
+      "category": "relationship reasoning",
+      "difficulty": "hard"
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "Which evidence supports the claim that removing the Reliability Gate is risky?",
+      "ground_truth": "The ablation study states that removing the Reliability Gate increased unsupported final answers from 3 percent to 11 percent.",
+      "category": "evidence selection",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "What limitation does the report state about the benchmark?",
+      "ground_truth": "The benchmark is a controlled document benchmark rather than a large public leaderboard, and RAGAS can be sensitive to wording for honest missing information answers.",
+      "category": "limitations",
+      "difficulty": "medium"
+    },
+    {
+      "document": "thesis_doc_04_evaluation_and_ablation_report.docx",
+      "question": "What public leaderboard ranking did the proposed agentic RAG system achieve?",
+      "ground_truth": "The document does not provide any public leaderboard ranking for the proposed agentic RAG system.",
+      "category": "missing information",
+      "difficulty": "hard"
+    }
+  ]
+}

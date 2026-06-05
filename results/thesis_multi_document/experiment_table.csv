@@ -1,0 +1,33 @@
+id,document,category,difficulty,question,baseline_gt_coverage,agentic_gt_coverage,baseline_faithfulness,baseline_answer_relevancy,baseline_context_precision,baseline_context_recall,baseline_overall,agentic_faithfulness,agentic_answer_relevancy,agentic_context_precision,agentic_context_recall,agentic_overall,baseline_latency_s,agentic_latency_s,baseline_chunks,agentic_chunks
+1,thesis_doc_01_rag_system_design.docx,summary,easy,What is the main purpose of the enterprise knowledge base RAG system?,0.467,0.667,,,,,,,,,,,9.8,40.39,2,3
+2,thesis_doc_01_rag_system_design.docx,fact extraction,easy,Which file formats are supported during document ingestion?,0.778,0.667,,,,,,,,,,,6.77,40.89,2,3
+3,thesis_doc_01_rag_system_design.docx,method explanation,medium,How do parent chunks and child chunks work in the retrieval design?,0.947,0.947,,,,,,,,,,,10.13,63.16,2,3
+4,thesis_doc_01_rag_system_design.docx,comparison,medium,Compare vector retrieval and BM25 keyword retrieval in this design.,0.81,0.714,,,,,,,,,,,10.97,60.68,2,3
+5,thesis_doc_01_rag_system_design.docx,relationship reasoning,hard,How does the reliability gate relate citations to retrieved chunks?,0.867,0.8,,,,,,,,,,,8.71,86.14,2,3
+6,thesis_doc_01_rag_system_design.docx,evidence selection,medium,Which evidence best supports the claim that the proposed system is more reliable than vector only RAG?,0.619,0.667,,,,,,,,,,,15.35,58.68,2,3
+7,thesis_doc_01_rag_system_design.docx,limitations,medium,What tradeoff is introduced by using the agentic system instead of the baseline?,0.692,0.692,,,,,,,,,,,7.95,73.4,2,3
+8,thesis_doc_01_rag_system_design.docx,missing information,hard,What exact production cost is reported for operating the enterprise RAG system?,0.571,0.571,,,,,,,,,,,7.92,51.15,2,3
+9,thesis_doc_02_multi_agent_workflow.docx,summary,easy,What are the three levels in the hierarchical multi agent workflow?,0.182,0.273,,,,,,,,,,,7.75,39.29,2,3
+10,thesis_doc_02_multi_agent_workflow.docx,fact extraction,easy,Which agents are listed at the operational level?,1.0,1.0,,,,,,,,,,,8.37,55.07,2,3
+11,thesis_doc_02_multi_agent_workflow.docx,method explanation,medium,How does the self reflection loop work?,0.889,0.778,,,,,,,,,,,13.41,64.3,2,3
+12,thesis_doc_02_multi_agent_workflow.docx,comparison,medium,Compare the Planner Agent and the Retrieval Coordinator.,0.882,0.765,,,,,,,,,,,11.68,62.74,2,3
+13,thesis_doc_02_multi_agent_workflow.docx,relationship reasoning,hard,How is the Critic Agent connected to the Writer Agent in the workflow?,0.538,0.538,,,,,,,,,,,9.56,54.78,2,3
+14,thesis_doc_02_multi_agent_workflow.docx,evidence selection,medium,Which evidence shows that the workflow is transparent for evaluation?,0.889,0.889,,,,,,,,,,,7.43,51.49,2,3
+15,thesis_doc_02_multi_agent_workflow.docx,limitations,medium,What limitation is placed on the reflection loop?,0.929,1.0,,,,,,,,,,,11.59,33.81,2,3
+16,thesis_doc_02_multi_agent_workflow.docx,missing information,hard,What exact hardware configuration is used by the Planner Agent?,0.714,0.714,,,,,,,,,,,7.02,36.29,2,3
+17,thesis_doc_03_graph_reasoning_case_study.docx,summary,easy,What incident is described in the graph reasoning case study?,0.765,0.765,,,,,,,,,,,13.29,53.3,2,3
+18,thesis_doc_03_graph_reasoning_case_study.docx,fact extraction,easy,Which teams own the Billing API and the Cache Layer?,1.0,1.0,,,,,,,,,,,7.13,39.27,2,3
+19,thesis_doc_03_graph_reasoning_case_study.docx,method explanation,medium,What are the four steps in the recovery procedure?,0.714,0.81,,,,,,,,,,,9.2,51.51,2,3
+20,thesis_doc_03_graph_reasoning_case_study.docx,comparison,medium,Compare the direct cause and the downstream effect in the Orion incident.,0.824,0.882,,,,,,,,,,,12.89,65.79,2,3
+21,thesis_doc_03_graph_reasoning_case_study.docx,relationship reasoning,hard,How does the Billing API affect the Audit Dashboard through the Cache Layer and Search Index?,0.938,1.0,,,,,,,,,,,14.94,59.37,2,3
+22,thesis_doc_03_graph_reasoning_case_study.docx,evidence selection,medium,Which evidence shows that the Audit Dashboard was not the root cause?,0.933,0.867,,,,,,,,,,,15.35,62.8,2,3
+23,thesis_doc_03_graph_reasoning_case_study.docx,limitations,medium,What is the highest risk identified for future schema migrations?,1.0,1.0,,,,,,,,,,,7.04,73.57,2,3
+24,thesis_doc_03_graph_reasoning_case_study.docx,missing information,hard,How many invoices were affected by the Orion incident?,0.6,0.6,,,,,,,,,,,8.34,35.93,2,3
+25,thesis_doc_04_evaluation_and_ablation_report.docx,summary,easy,What systems are compared in the evaluation report?,0.5,0.5,,,,,,,,,,,7.1,51.35,2,3
+26,thesis_doc_04_evaluation_and_ablation_report.docx,fact extraction,easy,What average RAGAS overall scores are reported for baseline and proposed systems?,1.0,1.0,,,,,,,,,,,8.17,65.15,2,3
+27,thesis_doc_04_evaluation_and_ablation_report.docx,method explanation,medium,How are RAGAS metrics and custom reliability metrics used in the report?,0.895,0.947,,,,,,,,,,,13.11,66.26,2,3
+28,thesis_doc_04_evaluation_and_ablation_report.docx,comparison,medium,Compare the reliability improvement and latency cost of the proposed system.,0.824,0.941,,,,,,,,,,,15.04,68.3,2,3
+29,thesis_doc_04_evaluation_and_ablation_report.docx,relationship reasoning,hard,How does graph search relate to the graph reasoning subset?,1.0,1.0,,,,,,,,,,,10.11,60.62,2,3
+30,thesis_doc_04_evaluation_and_ablation_report.docx,evidence selection,medium,Which evidence supports the claim that removing the Reliability Gate is risky?,0.727,0.727,,,,,,,,,,,12.17,58.63,2,3
+31,thesis_doc_04_evaluation_and_ablation_report.docx,limitations,medium,What limitation does the report state about the benchmark?,0.867,0.867,,,,,,,,,,,9.61,53.23,2,3
+32,thesis_doc_04_evaluation_and_ablation_report.docx,missing information,hard,What public leaderboard ranking did the proposed agentic RAG system achieve?,0.667,0.667,,,,,,,,,,,11.07,41.85,2,3

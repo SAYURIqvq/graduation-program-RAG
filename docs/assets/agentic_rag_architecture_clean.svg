@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+  <defs>
+    <style>
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 30px; font-weight: 700; fill: #17324d; }
+      .layer-label { font-family: Arial, Helvetica, sans-serif; font-size: 19px; font-weight: 700; fill: #1d3e62; }
+      .node-text { font-family: Arial, Helvetica, sans-serif; font-size: 18px; fill: #17233a; text-anchor: middle; dominant-baseline: middle; }
+      .note { font-family: Arial, Helvetica, sans-serif; font-size: 15px; fill: #49627a; }
+      .layer { stroke: #b8cce0; stroke-width: 1.5; rx: 16; }
+      .node { fill: #ffffff; stroke: #244f8f; stroke-width: 2; rx: 10; }
+      .arrow { fill: none; stroke: #244f8f; stroke-width: 2.4; marker-end: url(#arrowhead); }
+      .thin-arrow { fill: none; stroke: #244f8f; stroke-width: 2; marker-end: url(#arrowhead); }
+      .feedback { fill: none; stroke: #244f8f; stroke-width: 2.2; stroke-dasharray: 7 6; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,4 L0,8 Z" fill="#244f8f"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="980" fill="#ffffff"/>
+  <text x="60" y="62" class="title">Overall Architecture of the Proposed Agentic RAG System</text>
+
+  <rect x="50" y="88" width="1500" height="115" fill="#eaf4ff" class="layer"/>
+  <text x="75" y="122" class="layer-label">Presentation Layer</text>
+
+  <rect x="50" y="245" width="1500" height="125" fill="#f4faef" class="layer"/>
+  <text x="75" y="280" class="layer-label">Agent Orchestration Layer</text>
+
+  <rect x="50" y="505" width="1500" height="118" fill="#fff3df" class="layer"/>
+  <text x="75" y="540" class="layer-label">Retrieval Layer</text>
+
+  <rect x="50" y="682" width="1500" height="118" fill="#f4ecfb" class="layer"/>
+  <text x="75" y="716" class="layer-label">Storage and Graph Layer</text>
+
+  <rect x="50" y="846" width="1500" height="104" fill="#edf4fa" class="layer"/>
+  <text x="75" y="880" class="layer-label">Model Layer</text>
+
+  <rect x="680" y="115" width="240" height="58" class="node"/>
+  <text x="800" y="144" class="node-text">Streamlit Web UI</text>
+
+  <rect x="95" y="285" width="135" height="64" class="node"/>
+  <text x="162.5" y="317" class="node-text">Planner</text>
+
+  <rect x="260" y="285" width="160" height="64" class="node"/>
+  <text x="340" y="307" class="node-text">Query</text>
+  <text x="340" y="330" class="node-text">Decomposer</text>
+
+  <rect x="455" y="285" width="175" height="64" class="node"/>
+  <text x="542.5" y="307" class="node-text">Retrieval</text>
+  <text x="542.5" y="330" class="node-text">Coordinator</text>
+
+  <rect x="700" y="285" width="155" height="64" class="node"/>
+  <text x="777.5" y="317" class="node-text">Validator</text>
+
+  <rect x="900" y="285" width="150" height="64" class="node"/>
+  <text x="975" y="317" class="node-text">Synthesis</text>
+
+  <rect x="1095" y="285" width="145" height="64" class="node"/>
+  <text x="1167.5" y="317" class="node-text">Writer</text>
+
+  <rect x="1280" y="285" width="130" height="64" class="node"/>
+  <text x="1345" y="317" class="node-text">Critic</text>
+
+  <rect x="1435" y="285" width="95" height="64" class="node"/>
+  <text x="1482.5" y="305" class="node-text">Reliability</text>
+  <text x="1482.5" y="328" class="node-text">Gate</text>
+
+  <rect x="270" y="540" width="230" height="70" class="node"/>
+  <text x="385" y="575" class="node-text">Vector Search</text>
+
+  <rect x="675" y="540" width="250" height="70" class="node"/>
+  <text x="800" y="563" class="node-text">BM25 Keyword</text>
+  <text x="800" y="586" class="node-text">Search</text>
+
+  <rect x="1085" y="540" width="230" height="70" class="node"/>
+  <text x="1200" y="575" class="node-text">Graph Search</text>
+
+  <rect x="355" y="716" width="240" height="66" class="node"/>
+  <text x="475" y="738" class="node-text">ChromaDB Vector</text>
+  <text x="475" y="761" class="node-text">Store</text>
+
+  <rect x="1070" y="716" width="250" height="66" class="node"/>
+  <text x="1195" y="749" class="node-text">Knowledge Graph</text>
+
+  <rect x="355" y="875" width="240" height="58" class="node"/>
+  <text x="475" y="904" class="node-text">BGE Embeddings</text>
+
+  <rect x="1070" y="875" width="250" height="58" class="node"/>
+  <text x="1195" y="904" class="node-text">DeepSeek LLM</text>
+  <text x="1338" y="904" class="note">used by agents</text>
+
+  <path d="M800 173 L800 225 L162.5 225 L162.5 285" class="arrow"/>
+  <path d="M230 317 L260 317" class="arrow"/>
+  <path d="M420 317 L455 317" class="arrow"/>
+  <path d="M630 317 L700 317" class="arrow"/>
+  <path d="M855 317 L900 317" class="arrow"/>
+  <path d="M1050 317 L1095 317" class="arrow"/>
+  <path d="M1240 317 L1280 317" class="arrow"/>
+  <path d="M1410 317 L1435 317" class="arrow"/>
+
+  <path d="M1482.5 349 L1482.5 392 L1167.5 392 L1167.5 349" class="feedback"/>
+  <text x="1300" y="417" class="note">self reflection and answer regeneration</text>
+
+  <path d="M542.5 349 L542.5 430 L385 430 L385 540" class="arrow"/>
+  <path d="M542.5 349 L542.5 430 L800 430 L800 540" class="arrow"/>
+  <path d="M542.5 349 L542.5 430 L1200 430 L1200 540" class="arrow"/>
+
+  <path d="M385 610 L385 650 L475 650 L475 716" class="thin-arrow"/>
+  <path d="M800 610 L800 650 L475 650 L475 716" class="thin-arrow"/>
+  <path d="M1200 610 L1200 716" class="thin-arrow"/>
+
+  <path d="M475 875 L475 782" class="thin-arrow"/>
+  <path d="M1195 875 L1195 782" class="thin-arrow"/>
+
+  <polygon points="154,273 162.5,285 171,273" fill="#244f8f"/>
+  <polygon points="248,309 260,317 248,325" fill="#244f8f"/>
+  <polygon points="443,309 455,317 443,325" fill="#244f8f"/>
+  <polygon points="688,309 700,317 688,325" fill="#244f8f"/>
+  <polygon points="888,309 900,317 888,325" fill="#244f8f"/>
+  <polygon points="1083,309 1095,317 1083,325" fill="#244f8f"/>
+  <polygon points="1268,309 1280,317 1268,325" fill="#244f8f"/>
+  <polygon points="1423,309 1435,317 1423,325" fill="#244f8f"/>
+  <polygon points="1159.5,361 1167.5,349 1175.5,361" fill="#244f8f"/>
+
+  <polygon points="377,528 385,540 393,528" fill="#244f8f"/>
+  <polygon points="792,528 800,540 808,528" fill="#244f8f"/>
+  <polygon points="1192,528 1200,540 1208,528" fill="#244f8f"/>
+
+  <polygon points="467,704 475,716 483,704" fill="#244f8f"/>
+  <polygon points="1187,704 1195,716 1203,704" fill="#244f8f"/>
+
+  <polygon points="467,794 475,782 483,794" fill="#244f8f"/>
+  <polygon points="1187,794 1195,782 1203,794" fill="#244f8f"/>
+</svg>
